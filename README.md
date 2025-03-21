@@ -1,3 +1,98 @@
+# The Gradient in Gradient Descent
+### Introduction
+As you know, we entered our discussion of derivatives to determine the size and direction of a step with which to move along a cost curve. We first used a derivative in a single variable function to see how the output of our cost curve changed with respect to change a change in one of our regression line's variables. Then we learned about partial derivatives to see how a three-dimensional cost curve responded to a change in the regression line.
+
+However, we have not yet explicitly showed how partial derivatives apply to gradient descent.
+
+Well, that's what we hope to show in this lesson: explain how we can use partial derivatives to find the path to minimize our cost function, and thus find our "best fit" regression line.
+
+## Objectives
+You will be able to:
+
+Define a gradient in relation to gradient descent
+## What is the gradient?
+Now gradient descent literally means that we are taking the shortest path to descend towards our minimum. However, it is somewhat easier to understand gradient ascent than descent, and the two are quite related, so that's where we'll begin. Gradient ascent, as you could guess, simply means that we want to move in the direction of steepest ascent.
+
+Now moving in the direction of greatest ascent for a function 
+, means that our next step is a step some distance in the 
+ direction and some distance in the 
+ direction which is the steepest upward at that point.
+
+Note how this is a different task from what we have previously worked on for multivariable functions. So far, we have used partial derivatives to calculate the gain from moving directly in either the 
+ direction or the 
+ direction.
+
+Here, in finding gradient ascent, our task is not to calculate the gain from a move in either the 
+ or 
+ direction. Instead, our task is to find some combination of a change in 
+,
+ that brings the largest change in output.
+
+So if you look at the path our climbers are taking in the picture above, that is the direction of gradient ascent. If they tilt their path to the right or left, they will no longer be moving along the steepest upward path.
+
+The direction of the greatest rate of increase of a function is called the gradient. We denote the gradient with the nabla, which comes from the Greek word for harp, which is kind of what it looks like: 
+. So we can denote the gradient of a function, 
+, with 
+.
+
+## Calculating the gradient
+Now how do we find the direction for the greatest rate of increase? We use partial derivatives. Here's why.
+
+As we know, the partial derivative 
+ calculates the change in output from moving a little bit in the 
+ direction, and the partial derivative 
+ calculates the change in output from moving in the 
+ direction. Because with gradient ascent our goal is to make a nudge in 
+ that produces the greatest change in output, if 
+, we should make that move more in the 
+ direction than the 
+ direction, and vice versa. That is, we want to get the biggest bang for our buck.
+ ![image](https://github.com/user-attachments/assets/652ec094-c6d1-4987-9cc6-4278fe3fcb18)
+
+
+Let's relate this again to mountain climbers. Imagine the vertical edge on the left is our y-axis and the horizontal edge is on the bottom is our x-axis. For the climber in the yellow jacket, imagine his step size is three feet. A step straight along the y-axis will move him further upwards than a step along the x-axis. So in taking that step, he should direct himself more towards the y-axis than the x-axis. That will produce a bigger increase per step size.
+
+In fact, the direction of greatest ascent for a function, 
+, is the direction which is a proportion of 
+ steps in the 
+ direction and 
+ in the 
+ direction. So, for example, if 
+ = 5 and 
+ = 1, the direction of gradient ascent is five times more in the 
+ direction than the 
+ direction. And this seems to be the path, more or less that our climbers are taking - some combination of 
+ and 
+, but tilted more towards the 
+ direction.
+
+## Applying Gradient Descent
+Now that we have a better understanding of a gradient, let's apply our understanding to a multivariable function. Here is a plot of a function:  
+f(x,y)=2x+3y
+![image](https://github.com/user-attachments/assets/54440e09-bb3f-446d-a21d-3c5ef4fc5dbf)
+
+2d plane projected within a 3d plot
+
+Imagine being at the bottom left of the graph at the point , x=1, y=1. . What would be the direction of steepest ascent? It seems, just sizing it up visually, that we should move both in the positive direction and the positive  direction. Looking more carefully, it seems we should move more in the 
+ direction than the  direction. Let's see what our technique of taking the partial derivative indicates.
+
+The gradient of the function , that is  is the following: (x,y), that is
+
+∇f(x,y)=2x+3y is the following:
+dfdx(2x+3y)=2 and dfdy(2x+3y)=3.
+
+So what this tells us is to move in the direction of greatest ascent for the function f(x,y)=2x+3y, is to move up three and to the right two. So we would expect our path of greatest ascent to look like the following.
+
+line graph plotting y = 1.5x
+
+![image](https://github.com/user-attachments/assets/d8133fbd-80e6-43a5-aad4-3f53330ff08e)
+
+2d plane projected within a 3d plot
+![image](https://github.com/user-attachments/assets/07b8522e-11f7-470b-b47c-cf3fe9d83d1a)
+
+So this path maps up well to what we see visually. That is the idea behind gradient descent. The gradient is the partial derivative with respect to each type of variable of a multivariable function, in this case x and y. And the importance of the gradient is that its direction is the direction of steepest ascent. The negative gradient, that is the negative of each of the partial derivatives, is the direction of steepest descent. So our direction of gradient descent for the graph above is x=−2, y=−3, . And looking at the two graphs above, it seems that the steepest downward direction is just the opposite of the steepest upward direction. We get that by mathematically by simply taking the multiplying our partial derivatives by negative one.
+
+
 # Gradient to Cost Function
 
 ## Introduction
